@@ -23,7 +23,7 @@ function About() {
             </p>
             <p className="mt-4 text-gray-600">
               Nobis minus voluptatibus pariatur dignissimos libero quaerat iure
-              expedita at? Asperiores nemo possimus nesciunt dicta veniam
+              expedita at? Asperiores dnemo possimus nesciunt dicta veniam
               aspernatur quam mollitia.
             </p>
           </div>
