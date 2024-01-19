@@ -2,22 +2,20 @@ import React, { useState } from "react";
 import { useToDo } from "../contexts/ToDoContext";
 
 function TodoItem({ todo }) {
+  const [isTodoEditable, setIsTodoEditable] = useState(false);
 
-      const [isTodoEditable, setIsTodoEditable] = useState(false)
+  const [todoMsg, setTodoMsg] = useState(todo.toDo);
 
-      const[todoMsg, setTodoMsg] = useState(todo.toDo)
+  const { updateTodo, deleteTodo, toggleComplete } = useToDo();
 
-      const {updateTodo, deleteTodo, toggleComplete} = useToDo();
+  const editTodo = () => {
+    updateTodo(todo.id, { ...todo, toDo: todoMsg });
+    setIsTodoEditable(false);
+  };
 
-      const editTodo = () => {
-            updateTodo(todo.id, {...todo, toDo: todoMsg})
-            setIsTodoEditable(false)
-      }
-
-      const toggleCompleted = () => {
-           toggleComplete(todo.id);
-      } 
-
+  const toggleCompleted = () => {
+    toggleComplete(todo.id);
+  };
 
   return (
     <div
@@ -38,7 +36,7 @@ function TodoItem({ todo }) {
         } ${todo.completed ? "line-through" : ""}`}
         value={todoMsg}
         onChange={(ev) => setTodoMsg(ev.target.value)}
-        readOnly= {!isTodoEditable}
+        readOnly={!isTodoEditable}
       />
       {/* Edit, Save Button */}
       <button
